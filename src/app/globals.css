@@ -1,0 +1,118 @@
+@import 'tailwindcss';
+
+@import '@mysuf1020/mylib-ui/style.css';
+@import '@mysuf1020/mylib-ui/preset-v4.css';
+
+:root {
+  color-scheme: light;
+  --background: #f7f5f0;
+  --foreground: #141721;
+  --asthara-gold: #c88242;
+  --asthara-gold-light: #f5c984;
+  --asthara-gold-dark: #965821;
+  --asthara-navy: #141721;
+}
+
+html, body {
+  color-scheme: light !important;
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Force text contrast override */
+.text-slate-900 { color: #141721 !important; }
+.text-slate-800 { color: #1e2333 !important; }
+.text-slate-700 { color: #333d52 !important; }
+.text-slate-600 { color: #48546a !important; }
+.text-slate-500 { color: #64748b !important; }
+.text-slate-400 { color: #94a3b8 !important; }
+
+/* Custom Asthara Gold Buttons */
+.btn-asthara-primary {
+  background: linear-gradient(135deg, #c88242 0%, #b57335 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px 0 rgba(200, 130, 66, 0.25) !important;
+}
+
+.btn-asthara-primary:hover {
+  background: linear-gradient(135deg, #d9944d 0%, #c88242 100%) !important;
+}
+
+/* Quickbill Platform Table Styling & Asthara Gold Hover/Selection Effects */
+tr[data-slot="table-row"],
+.mylib-table-row {
+  border-bottom: 1px solid #e5e0d8 !important;
+  transition: background-color 0.15s ease-in-out;
+  cursor: pointer !important;
+}
+
+tr[data-slot="table-row"]:hover {
+  background-color: #fdfaf5 !important;
+}
+
+tr[data-slot="table-row"]:active,
+tr[data-slot="table-row"][data-state="selected"],
+tr[data-slot="table-row"]:focus-within {
+  background-color: #fff6eb !important; /* Soft Asthara warm gold highlight when clicked/selected */
+}
+
+th[data-slot="table-head"] {
+  padding-top: 0.875rem !important;
+  padding-bottom: 0.875rem !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  font-weight: 600 !important;
+  color: #48546a !important;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e5e0d8 !important;
+}
+
+td[data-slot="table-cell"] {
+  padding-top: 0.875rem !important;
+  padding-bottom: 0.875rem !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  color: #1e2333 !important;
+}
+
+/* 3 Dots Dropdown Menu styling - non-transparent, highest z-index layer */
+[data-slot="dropdown-menu-content"],
+.mylib-dropdown-content {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  color: #141721 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid #e5e0d8 !important;
+  z-index: 99999 !important;
+  border-radius: 0.75rem !important;
+}
+
+[data-slot="dropdown-menu-item"] {
+  background-color: #ffffff !important;
+  color: #333d52 !important;
+  font-weight: 500 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.375rem !important;
+}
+
+[data-slot="dropdown-menu-item"]:hover {
+  background-color: #fff6eb !important;
+  color: #c88242 !important;
+}
+
+/* Sticky last column (Aksi) — stays visible when table scrolls horizontally */
+th[data-slot="table-head"]:last-child,
+td[data-slot="table-cell"]:last-child {
+  position: sticky;
+  right: 0;
+  z-index: 2;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  background-color: #ffffff !important;
+  box-shadow: -8px 0 12px -4px rgba(20, 23, 33, 0.06);
+}
+
+tr[data-slot="table-row"]:hover td[data-slot="table-cell"]:last-child {
+  background-color: #fdfaf5 !important;
+}
