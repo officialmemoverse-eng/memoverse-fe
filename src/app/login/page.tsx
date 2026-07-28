@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Lock, Mail, Eye, EyeOff, CheckCircle2, KeyRound, Heart, Sparkles } from 'lucide-react';
 import { Button, Spinner } from '@mysuf1020/mylib-ui';
 import { apiClient } from '@/lib/api-client';
-import { AstharaLogo } from '@/components/common/asthara-logo';
+import { MemoVerseLogo } from '@/components/common/memoverse-logo';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -52,7 +52,7 @@ export default function LoginPage() {
         <div className="p-8 md:p-10 bg-gradient-to-br from-[#1E222D] via-[#161922] to-[#0F1219] flex flex-col justify-between border-b md:border-b-0 md:border-r border-[#2A2E3D]">
           <div>
             <div className="mb-8">
-              <AstharaLogo className="w-10 h-10" />
+              <MemoVerseLogo className="w-10 h-10" />
             </div>
 
             <div className="space-y-4 my-8">

@@ -7,10 +7,10 @@
   color-scheme: light;
   --background: #f7f5f0;
   --foreground: #141721;
-  --asthara-gold: #c88242;
-  --asthara-gold-light: #f5c984;
-  --asthara-gold-dark: #965821;
-  --asthara-navy: #141721;
+  --memoverse-gold: #c88242;
+  --memoverse-gold-light: #f5c984;
+  --memoverse-gold-dark: #965821;
+  --memoverse-navy: #141721;
 }
 
 html, body {
@@ -28,18 +28,18 @@ html, body {
 .text-slate-500 { color: #64748b !important; }
 .text-slate-400 { color: #94a3b8 !important; }
 
-/* Custom Asthara Gold Buttons */
-.btn-asthara-primary {
+/* Custom MemoVerse Gold Buttons */
+.btn-memoverse-primary {
   background: linear-gradient(135deg, #c88242 0%, #b57335 100%) !important;
   color: #ffffff !important;
   box-shadow: 0 4px 14px 0 rgba(200, 130, 66, 0.25) !important;
 }
 
-.btn-asthara-primary:hover {
+.btn-memoverse-primary:hover {
   background: linear-gradient(135deg, #d9944d 0%, #c88242 100%) !important;
 }
 
-/* Quickbill Platform Table Styling & Asthara Gold Hover/Selection Effects */
+/* MemoVerse Platform Table Styling & Warm Gold Hover/Selection Effects */
 tr[data-slot="table-row"],
 .mylib-table-row {
   border-bottom: 1px solid #e5e0d8 !important;
@@ -54,7 +54,7 @@ tr[data-slot="table-row"]:hover {
 tr[data-slot="table-row"]:active,
 tr[data-slot="table-row"][data-state="selected"],
 tr[data-slot="table-row"]:focus-within {
-  background-color: #fff6eb !important; /* Soft Asthara warm gold highlight when clicked/selected */
+  background-color: #fff6eb !important; /* Soft warm gold highlight when clicked/selected */
 }
 
 th[data-slot="table-head"] {

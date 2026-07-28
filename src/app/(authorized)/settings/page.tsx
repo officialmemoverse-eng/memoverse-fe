@@ -310,7 +310,7 @@ export default function SettingsPage() {
               </div>
 
               <Flex justifyContent="end" gap="3" className="pt-4 border-t border-slate-100">
-                <Button type="submit" disabled={savingConfig} className="btn-asthara-primary">
+                <Button type="submit" disabled={savingConfig} className="btn-memoverse-primary">
                   <Flex alignItems="center" gap="2">
                     {savingConfig ? <Spinner size={16} /> : <Save className="w-4 h-4" />}
                     <span>Simpan Konfigurasi Kebijakan</span>

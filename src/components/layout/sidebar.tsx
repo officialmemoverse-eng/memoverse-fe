@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { LayoutDashboard, Heart, Calendar, Image as ImageIcon, Music, Mail, Sparkles, Settings, Bookmark, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { AstharaLogo } from '@/components/common/asthara-logo';
+import { MemoVerseLogo } from '@/components/common/memoverse-logo';
 
 const navigation = [
   { name: 'Public Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -24,7 +24,7 @@ export function Sidebar() {
     <aside className="w-64 bg-[#141721] text-white min-h-screen flex flex-col border-r border-[#242938] shrink-0">
       {/* Brand Header */}
       <div className="p-6 border-b border-[#242938] bg-[#10121B]">
-        <AstharaLogo className="w-9 h-9" />
+        <MemoVerseLogo className="w-9 h-9" />
       </div>
 
       {/* Navigation Links */}
