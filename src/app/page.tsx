@@ -1,20 +1,10 @@
-'use client';
+import { ModernLandingPage } from '@/components/landing/modern-landing-page';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+export const metadata = {
+  title: 'MoreThanMemories by MemoVerse - Satu Cerita, Satu Link, Seumur Hidup!',
+  description: 'Preserve your family legacy in a beautiful, interactive digital home. Sharing meaningful stories and memories, crafted for generations.',
+};
 
 export default function RootPage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    // SaaS Public Dashboard is accessible to everyone
-    router.replace('/dashboard');
-  }, [router]);
-
-  return (
-    <div className="min-h-screen bg-[#0F1219] flex items-center justify-center">
-      <div className="w-8 h-8 border-4 border-[#C88242] border-t-transparent rounded-full animate-spin" />
-    </div>
-  );
+  return <ModernLandingPage />;
 }
-
