@@ -1,4 +1,4 @@
-'use client';
+import { ModernLandingPage } from '@/components/landing/modern-landing-page';
 
 import Link from 'next/link';
 import {

@@ -136,8 +136,8 @@ export default function LoginPage() {
           {notice && (
             <div
               className={`mb-5 p-3.5 rounded-xl border text-xs font-medium leading-relaxed ${notice.type === 'error'
-                  ? 'bg-rose-50 border-rose-200 text-rose-600'
-                  : 'bg-slate-50 border-slate-200 text-slate-600'
+                ? 'bg-rose-50 border-rose-200 text-rose-600'
+                : 'bg-slate-50 border-slate-200 text-slate-600'
                 }`}
             >
               {notice.message}
