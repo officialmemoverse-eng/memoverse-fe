@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Lock, Mail, Eye, EyeOff, KeyRound, Quote } from 'lucide-react';
+import { Lock, Mail, User, Eye, EyeOff, Quote } from 'lucide-react';
 import { Spinner } from '@mysuf1020/mylib-ui';
 import { apiClient } from '@/lib/api-client';
 
@@ -26,38 +26,42 @@ function AppleIcon() {
   );
 }
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const router = useRouter();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [remember, setRemember] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [notice, setNotice] = useState<{ type: 'error' | 'info'; message: string } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setNotice(null);
 
+    if (password !== confirmPassword) {
+      setNotice({ type: 'error', message: 'Konfirmasi password tidak cocok.' });
+      return;
+    }
+    if (password.length < 6) {
+      setNotice({ type: 'error', message: 'Password minimal 6 karakter.' });
+      return;
+    }
+
+    setLoading(true);
     try {
-      const res = await apiClient.post('/admin/auth/login', { email, password });
+      const res = await apiClient.post('/admin/auth/register', { name, email, password });
       if (res.data.success) {
         localStorage.setItem('admin_token', res.data.data.access_token);
         localStorage.setItem('admin_user', JSON.stringify(res.data.data.user));
         router.push('/dashboard');
       }
     } catch (err: any) {
-      setNotice({ type: 'error', message: err.response?.data?.message || 'Login gagal, silakan periksa email & password Anda.' });
+      setNotice({ type: 'error', message: err.response?.data?.message || 'Registrasi gagal, silakan coba lagi.' });
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleFillDemo = () => {
-    setEmail('admin@memoverse.app');
-    setPassword('admin123');
-    setNotice(null);
   };
 
   const handleComingSoon = (feature: string) => {
@@ -77,10 +81,10 @@ export default function LoginPage() {
 
           <div className="space-y-4 max-w-sm">
             <h2 className="text-3xl lg:text-4xl font-extrabold leading-snug tracking-tight">
-              Merangkai Kanvas Digital untuk Kenangan Romantis Kamu
+              Mulai Ceritakan Perjalanan Cinta Kamu
             </h2>
             <p className="text-white/70 text-sm leading-relaxed">
-              Platform kreator untuk cerita perjalanan cinta, album kenangan, timeline anniversary, dan halaman romantis yang bisa dibagikan ke pasangan tersayang.
+              Bergabung sebagai creator dan bangun halaman romantis, album kenangan, serta timeline anniversary untuk dibagikan ke pasangan tersayang.
             </p>
           </div>
         </div>
@@ -100,18 +104,18 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right Side: Creator Login Form */}
+      {/* Right Side: Creator Register Form */}
       <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-12">
         <div className="w-full max-w-sm mx-auto">
           <div className="mb-6">
-            <h3 className="text-2xl font-bold text-slate-900 mb-1">Selamat Datang Kembali</h3>
-            <p className="text-slate-500 text-sm">Masukkan detail Anda untuk mengakses Creator Studio.</p>
+            <h3 className="text-2xl font-bold text-slate-900 mb-1">Buat Akun Creator</h3>
+            <p className="text-slate-500 text-sm">Mulai kelola template romantis kamu bersama Memoverse.</p>
           </div>
 
           <div className="grid grid-cols-2 gap-3 mb-5">
             <button
               type="button"
-              onClick={() => handleComingSoon('Login dengan Google')}
+              onClick={() => handleComingSoon('Daftar dengan Google')}
               className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm font-medium text-slate-700 cursor-pointer"
             >
               <GoogleIcon />
@@ -119,7 +123,7 @@ export default function LoginPage() {
             </button>
             <button
               type="button"
-              onClick={() => handleComingSoon('Login dengan Apple')}
+              onClick={() => handleComingSoon('Daftar dengan Apple')}
               className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm font-medium text-slate-700 cursor-pointer"
             >
               <AppleIcon />
@@ -135,16 +139,34 @@ export default function LoginPage() {
 
           {notice && (
             <div
-              className={`mb-5 p-3.5 rounded-xl border text-xs font-medium leading-relaxed ${notice.type === 'error'
+              className={`mb-5 p-3.5 rounded-xl border text-xs font-medium leading-relaxed ${
+                notice.type === 'error'
                   ? 'bg-rose-50 border-rose-200 text-rose-600'
                   : 'bg-slate-50 border-slate-200 text-slate-600'
-                }`}
+              }`}
             >
               {notice.message}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-xs font-semibold text-slate-600 mb-1.5">
+                Nama Creator
+              </label>
+              <div className="relative">
+                <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  placeholder="Nama lengkap Anda"
+                  className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B3223A] focus:border-transparent transition"
+                />
+              </div>
+            </div>
+
             <div>
               <label className="block text-xs font-semibold text-slate-600 mb-1.5">
                 Email Creator
@@ -163,16 +185,9 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-semibold text-slate-600">Password</label>
-                <button
-                  type="button"
-                  onClick={() => handleComingSoon('Lupa password')}
-                  className="text-xs font-semibold text-[#B3223A] hover:text-[#8E1A2E] transition cursor-pointer"
-                >
-                  Lupa?
-                </button>
-              </div>
+              <label className="block text-xs font-semibold text-slate-600 mb-1.5">
+                Password
+              </label>
               <div className="relative">
                 <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
@@ -180,7 +195,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  placeholder="Masukkan password Anda"
+                  placeholder="Minimal 6 karakter"
                   className="w-full pl-10 pr-10 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B3223A] focus:border-transparent transition"
                 />
                 <button
@@ -193,38 +208,37 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <label className="flex items-center gap-2 text-xs text-slate-500 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                checked={remember}
-                onChange={(e) => setRemember(e.target.checked)}
-                className="w-3.5 h-3.5 rounded border-slate-300 text-[#B3223A] focus:ring-[#B3223A] cursor-pointer"
-              />
-              Ingat saya selama 30 hari
-            </label>
+            <div>
+              <label className="block text-xs font-semibold text-slate-600 mb-1.5">
+                Konfirmasi Password
+              </label>
+              <div className="relative">
+                <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  placeholder="Ulangi password Anda"
+                  className="w-full pl-10 pr-10 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B3223A] focus:border-transparent transition"
+                />
+              </div>
+            </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white transition shadow-lg shadow-[#B3223A]/25 flex items-center justify-center cursor-pointer"
+              className="w-full py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white transition shadow-lg shadow-[#B3223A]/25 mt-2 flex items-center justify-center cursor-pointer"
             >
-              {loading ? <Spinner size={18} /> : 'Masuk ke Hatimu'}
+              {loading ? <Spinner size={18} /> : 'Daftar Sekarang'}
             </button>
           </form>
 
-          <div className="mt-6 text-center space-y-3">
-            <button
-              type="button"
-              onClick={handleFillDemo}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 border border-rose-200 text-[#B3223A] text-xs font-semibold transition cursor-pointer"
-            >
-              <KeyRound className="w-3.5 h-3.5" />
-              <span>Isi Kredensial Demo Admin</span>
-            </button>
+          <div className="mt-6 text-center">
             <p className="text-slate-500 text-sm">
-              Baru di Memoverse?{' '}
-              <Link href="/register" className="text-[#B3223A] font-bold hover:text-[#8E1A2E] transition">
-                Buat akun
+              Sudah punya akun?{' '}
+              <Link href="/login" className="text-[#B3223A] font-bold hover:text-[#8E1A2E] transition">
+                Masuk di sini
               </Link>
             </p>
           </div>

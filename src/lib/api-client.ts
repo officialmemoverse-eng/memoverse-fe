@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/v1';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/v1';
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -16,7 +16,7 @@ apiClient.interceptors.request.use(async (config) => {
     let token = localStorage.getItem('admin_token') || localStorage.getItem('token');
 
     // Auto-login as Super Admin in local dev if token is missing
-    if (!token && !isLoggingIn && !config.url?.includes('/auth/login')) {
+    if (!token && !isLoggingIn && !config.url?.includes('/auth/login') && !config.url?.includes('/auth/register')) {
       isLoggingIn = true;
       try {
         const loginRes = await axios.post(`${API_BASE_URL}/admin/auth/login`, {
