@@ -14,6 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
+      <head>
+        <link rel="preconnect" href="https://accounts.google.com" />
+      </head>
       <body className="antialiased">
         <Providers>{children}</Providers>
       </body>

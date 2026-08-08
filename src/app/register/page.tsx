@@ -6,25 +6,7 @@ import Link from 'next/link';
 import { Lock, Mail, User, Eye, EyeOff, Quote } from 'lucide-react';
 import { Spinner } from '@mysuf1020/mylib-ui';
 import { apiClient } from '@/lib/api-client';
-
-function GoogleIcon() {
-  return (
-    <svg className="w-4 h-4" viewBox="0 0 24 24">
-      <path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.42-.22-2.05H12v3.72h6.6c-.13 1.09-.86 2.74-2.47 3.85l-.02.15 3.59 2.78.25.02c2.28-2.1 3.57-5.19 3.57-8.47Z" />
-      <path fill="#34A853" d="M12 24c3.24 0 5.95-1.07 7.93-2.9l-3.78-2.93c-1.02.7-2.4 1.19-4.15 1.19-3.18 0-5.88-2.1-6.84-5.02l-.14.01-3.72 2.88-.05.14C3.24 21.3 7.28 24 12 24Z" />
-      <path fill="#FBBC05" d="M5.16 14.34A7.4 7.4 0 0 1 4.75 12c0-.81.14-1.6.4-2.34l-.01-.16-3.77-2.93-.12.06A11.96 11.96 0 0 0 0 12c0 1.93.46 3.76 1.25 5.37l3.9-3.03Z" />
-      <path fill="#EA4335" d="M12 4.75c2.26 0 3.79.98 4.66 1.8l3.4-3.32C17.94 1.19 15.24 0 12 0 7.28 0 3.24 2.7 1.25 6.63l3.9 3.03C6.12 6.85 8.82 4.75 12 4.75Z" />
-    </svg>
-  );
-}
-
-function AppleIcon() {
-  return (
-    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M16.36 1.05c.1 1.02-.3 2.02-.93 2.75-.65.75-1.72 1.34-2.72 1.26-.12-1 .36-2.05.98-2.72.68-.75 1.85-1.3 2.67-1.29Zm3.36 16.8c-.5 1.15-.74 1.66-1.38 2.67-.9 1.4-2.16 3.14-3.73 3.16-1.4.02-1.76-.9-3.66-.89-1.9.01-2.29.9-3.69.88-1.57-.02-2.76-1.59-3.66-2.99C1.03 17.5.2 13.2 1.9 10.3c.85-1.44 2.37-2.35 4.03-2.37 1.44-.03 2.8.97 3.68.97.87 0 2.52-1.2 4.25-1.02.72.03 2.75.29 4.05 2.19-.1.07-2.42 1.42-2.39 4.23.03 3.35 2.94 4.47 2.97 4.48-.03.09-.46 1.6-1.17 3.07Z" />
-    </svg>
-  );
-}
+import { GoogleSignInButton } from '@/components/auth/google-sign-in-button';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -64,8 +46,21 @@ export default function RegisterPage() {
     }
   };
 
-  const handleComingSoon = (feature: string) => {
-    setNotice({ type: 'info', message: `${feature} akan segera hadir.` });
+  const handleGoogleCredential = async (idToken: string) => {
+    setNotice(null);
+    setLoading(true);
+    try {
+      const res = await apiClient.post('/admin/auth/google', { credential: idToken });
+      if (res.data.success) {
+        localStorage.setItem('admin_token', res.data.data.access_token);
+        localStorage.setItem('admin_user', JSON.stringify(res.data.data.user));
+        router.push('/dashboard');
+      }
+    } catch (err: any) {
+      setNotice({ type: 'error', message: err.response?.data?.message || 'Daftar dengan Google gagal.' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -112,23 +107,8 @@ export default function RegisterPage() {
             <p className="text-slate-500 text-sm">Mulai kelola template romantis kamu bersama Memoverse.</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 mb-5">
-            <button
-              type="button"
-              onClick={() => handleComingSoon('Daftar dengan Google')}
-              className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm font-medium text-slate-700 cursor-pointer"
-            >
-              <GoogleIcon />
-              Google
-            </button>
-            <button
-              type="button"
-              onClick={() => handleComingSoon('Daftar dengan Apple')}
-              className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm font-medium text-slate-700 cursor-pointer"
-            >
-              <AppleIcon />
-              Apple
-            </button>
+          <div className="mb-5">
+            <GoogleSignInButton onCredential={handleGoogleCredential} text="signup_with" />
           </div>
 
           <div className="flex items-center gap-3 mb-5">

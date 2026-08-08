@@ -261,14 +261,24 @@ export default function StoryEditorPage() {
     }
   };
 
+  const copyShareLink = async () => {
+    if (!shareUrl || typeof navigator === 'undefined' || !navigator.clipboard) return;
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      // Clipboard access can fail for reasons unrelated to publishing (permissions,
+      // insecure context, etc.) — don't let it look like the publish itself failed.
+      console.error('Failed to copy share link', err);
+    }
+  };
+
   const handleGenerateLink = async () => {
     if (!story) return;
 
     if (story.status === 'published') {
-      if (!shareUrl || typeof navigator === 'undefined') return;
-      await navigator.clipboard.writeText(shareUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      await copyShareLink();
       return;
     }
 
@@ -278,11 +288,7 @@ export default function StoryEditorPage() {
       const res = await apiClient.post(`/stories/${id}/publish`);
       if (res.data.success) {
         setStory((prev) => (prev ? { ...prev, status: res.data.data.status } : prev));
-        if (typeof navigator !== 'undefined' && shareUrl) {
-          await navigator.clipboard.writeText(shareUrl);
-          setCopied(true);
-          setTimeout(() => setCopied(false), 2000);
-        }
+        await copyShareLink();
       }
     } catch (err: any) {
       setPublishError(err.response?.data?.message || 'Gagal mempublikasikan cerita.');
