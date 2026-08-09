@@ -15,7 +15,6 @@ apiClient.interceptors.request.use(async (config) => {
   if (typeof window !== 'undefined') {
     let token = localStorage.getItem('admin_token') || localStorage.getItem('token');
 
-    // Auto-login as Super Admin in local dev if token is missing
     if (!token && !isLoggingIn && !config.url?.includes('/auth/login') && !config.url?.includes('/auth/register')) {
       isLoggingIn = true;
       try {
