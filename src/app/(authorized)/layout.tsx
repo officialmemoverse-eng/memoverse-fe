@@ -4,7 +4,6 @@ import { usePathname } from 'next/navigation';
 import { Sidebar } from '@/components/layout/sidebar';
 import { Header } from '@/components/layout/header';
 
-// The story editor renders its own toolbar in place of the shared Header.
 const HEADERLESS_ROUTE = /^\/dashboard\/stories\/[^/]+$/;
 
 export default function AppLayout({
