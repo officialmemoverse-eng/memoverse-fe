@@ -326,7 +326,7 @@ export default function StoryEditorPage() {
         <div className="flex items-center gap-3 min-w-0">
           <button
             onClick={() => router.push('/dashboard/my-creations')}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#B3223A] transition cursor-pointer shrink-0"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#264653] transition cursor-pointer shrink-0"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
@@ -340,7 +340,7 @@ export default function StoryEditorPage() {
           </span>
           <button
             onClick={() => router.push(`/dashboard/stories/${id}/preview`)}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl font-semibold text-xs bg-white border border-slate-200 hover:border-[#B3223A]/50 text-slate-600 transition cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl font-semibold text-xs bg-white border border-slate-200 hover:border-[#264653]/50 text-slate-600 transition cursor-pointer"
           >
             <Eye className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Pratinjau</span>
@@ -348,7 +348,7 @@ export default function StoryEditorPage() {
           <button
             onClick={handleGenerateLink}
             disabled={publishing}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl font-bold text-xs bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white shadow-md shadow-[#B3223A]/25 transition cursor-pointer disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl font-bold text-xs bg-[#264653] hover:bg-[#D97757] text-white shadow-md shadow-[#264653]/25 transition cursor-pointer disabled:opacity-60"
           >
             {publishing ? <Spinner size={14} /> : <Link2 className="w-3.5 h-3.5" />}
             <span>
@@ -376,7 +376,7 @@ export default function StoryEditorPage() {
           <button
             onClick={() => setTab('cover')}
             className={`px-4 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
-              tab === 'cover' ? 'bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] text-white' : 'text-slate-500 hover:text-slate-700'
+              tab === 'cover' ? 'bg-[#264653] text-white' : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             Sampul
@@ -384,7 +384,7 @@ export default function StoryEditorPage() {
           <button
             onClick={() => setTab('gallery')}
             className={`px-4 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
-              tab === 'gallery' ? 'bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] text-white' : 'text-slate-500 hover:text-slate-700'
+              tab === 'gallery' ? 'bg-[#264653] text-white' : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             Galeri{story.media.length > 0 ? ` (${story.media.length})` : ''}
@@ -404,10 +404,10 @@ export default function StoryEditorPage() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   onBlur={handleSaveTitle}
-                  className="w-full px-4 py-2.5 pr-10 bg-slate-50 border border-slate-200 rounded-xl text-base font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#B3223A] focus:border-transparent transition"
+                  className="w-full px-4 py-2.5 pr-10 bg-slate-50 border border-slate-200 rounded-xl text-base font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#264653] focus:border-transparent transition"
                 />
                 {savingTitle && (
-                  <Loader2 className="w-4 h-4 text-[#B3223A] animate-spin absolute right-3.5 top-1/2 -translate-y-1/2" />
+                  <Loader2 className="w-4 h-4 text-[#264653] animate-spin absolute right-3.5 top-1/2 -translate-y-1/2" />
                 )}
               </div>
             </div>
@@ -422,7 +422,7 @@ export default function StoryEditorPage() {
                 <button
                   onClick={() => setDevice('mobile')}
                   className={`p-2 rounded-lg transition cursor-pointer ${
-                    device === 'mobile' ? 'bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] text-white' : 'text-slate-400 hover:text-slate-600'
+                    device === 'mobile' ? 'bg-[#264653] text-white' : 'text-slate-400 hover:text-slate-600'
                   }`}
                 >
                   <Smartphone className="w-4 h-4" />
@@ -430,7 +430,7 @@ export default function StoryEditorPage() {
                 <button
                   onClick={() => setDevice('desktop')}
                   className={`p-2 rounded-lg transition cursor-pointer ${
-                    device === 'desktop' ? 'bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] text-white' : 'text-slate-400 hover:text-slate-600'
+                    device === 'desktop' ? 'bg-[#264653] text-white' : 'text-slate-400 hover:text-slate-600'
                   }`}
                 >
                   <Monitor className="w-4 h-4" />
@@ -493,7 +493,7 @@ export default function StoryEditorPage() {
                   onClick={() => setCoverMediaId('')}
                   title="Gunakan gradien tema"
                   className={`w-14 h-14 rounded-xl bg-gradient-to-br ${coverGradient} border-2 transition cursor-pointer ${
-                    !coverMediaId ? 'border-[#B3223A]' : 'border-transparent'
+                    !coverMediaId ? 'border-[#264653]' : 'border-transparent'
                   }`}
                 />
                 {photoMedia.map((m) => (
@@ -501,7 +501,7 @@ export default function StoryEditorPage() {
                     key={m.id}
                     onClick={() => setCoverMediaId(m.id)}
                     className={`w-14 h-14 rounded-xl overflow-hidden border-2 transition cursor-pointer ${
-                      coverMediaId === m.id ? 'border-[#B3223A]' : 'border-transparent'
+                      coverMediaId === m.id ? 'border-[#264653]' : 'border-transparent'
                     }`}
                   >
                     <img src={m.url} alt="" className="w-full h-full object-cover" />
@@ -513,7 +513,7 @@ export default function StoryEditorPage() {
             {/* Ambient music + theme preset controls */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <div className="relative inline-flex items-center gap-2 pl-4 pr-8 py-2.5 rounded-full bg-white border border-slate-200 shadow-sm">
-                <Music className="w-4 h-4 text-[#B3223A] shrink-0" />
+                <Music className="w-4 h-4 text-[#264653] shrink-0" />
                 <select
                   value={musicKey}
                   onChange={(e) => setMusicKey(e.target.value)}
@@ -529,7 +529,7 @@ export default function StoryEditorPage() {
               </div>
 
               <div className="relative inline-flex items-center gap-2 pl-4 pr-8 py-2.5 rounded-full bg-white border border-slate-200 shadow-sm">
-                <Palette className="w-4 h-4 text-[#B3223A] shrink-0" />
+                <Palette className="w-4 h-4 text-[#264653] shrink-0" />
                 <select
                   value={story.theme}
                   onChange={(e) => handleSelectTheme(e.target.value)}
@@ -543,7 +543,7 @@ export default function StoryEditorPage() {
                   ))}
                 </select>
                 {savingTheme ? (
-                  <Loader2 className="w-3.5 h-3.5 text-[#B3223A] animate-spin absolute right-3 top-1/2 -translate-y-1/2" />
+                  <Loader2 className="w-3.5 h-3.5 text-[#264653] animate-spin absolute right-3 top-1/2 -translate-y-1/2" />
                 ) : (
                   <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 )}
@@ -564,7 +564,7 @@ export default function StoryEditorPage() {
                 value={uploadCaption}
                 onChange={(e) => setUploadCaption(e.target.value)}
                 placeholder="Tulis caption untuk momen ini (opsional)"
-                className="flex-1 px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B3223A] focus:border-transparent transition"
+                className="flex-1 px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#264653] focus:border-transparent transition"
               />
               <input
                 ref={fileInputRef}
@@ -576,7 +576,7 @@ export default function StoryEditorPage() {
               />
               <label
                 htmlFor="media-upload-input"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white transition shadow-lg shadow-[#B3223A]/25 cursor-pointer shrink-0"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-[#264653] hover:bg-[#D97757] text-white transition shadow-lg shadow-[#264653]/25 cursor-pointer shrink-0"
               >
                 {uploading ? <Spinner size={16} /> : <Upload className="w-4 h-4" />}
                 <span>{uploading ? 'Mengunggah...' : 'Unggah'}</span>
@@ -608,12 +608,12 @@ export default function StoryEditorPage() {
                             value={captionDraft}
                             onChange={(e) => setCaptionDraft(e.target.value)}
                             autoFocus
-                            className="flex-1 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#B3223A]"
+                            className="flex-1 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#264653]"
                           />
                           <button
                             onClick={() => handleSaveCaption(media.id)}
                             disabled={savingCaption}
-                            className="text-[#B3223A] hover:text-[#8E1A2E] transition cursor-pointer shrink-0"
+                            className="text-[#264653] hover:text-[#D97757] transition cursor-pointer shrink-0"
                           >
                             {savingCaption ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
                           </button>
@@ -631,14 +631,14 @@ export default function StoryEditorPage() {
                                   setTab('cover');
                                 }}
                                 title="Jadikan sampul"
-                                className="text-slate-400 hover:text-[#B3223A] transition cursor-pointer"
+                                className="text-slate-400 hover:text-[#264653] transition cursor-pointer"
                               >
                                 <ImageIcon className="w-3.5 h-3.5" />
                               </button>
                             )}
                             <button
                               onClick={() => startEditCaption(media)}
-                              className="text-slate-400 hover:text-[#B3223A] transition cursor-pointer"
+                              className="text-slate-400 hover:text-[#264653] transition cursor-pointer"
                             >
                               <Pencil className="w-3.5 h-3.5" />
                             </button>

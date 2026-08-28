@@ -67,7 +67,7 @@ export default function LoginPage() {
     <div className="min-h-screen w-full grid grid-cols-1 md:grid-cols-2 bg-white">
 
       {/* Left Side: MemoVerse Hero */}
-      <div className="relative hidden md:flex flex-col justify-between p-10 lg:p-16 bg-gradient-to-br from-[#4A0F1C] via-[#6E1626] to-[#2A0A12] text-white overflow-hidden">
+      <div className="relative hidden md:flex flex-col justify-between p-10 lg:p-16 bg-[#264653] text-white overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_15%,rgba(255,255,255,0.10),transparent_55%)] pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
@@ -90,7 +90,7 @@ export default function LoginPage() {
             &ldquo;Memoverse mengubah cara kami merangkai kenangan pernikahan. Antarmukanya seindah konten yang ia bantu ciptakan.&rdquo;
           </p>
           <div className="flex items-center gap-3 mt-4">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-rose-300 to-rose-500 shrink-0" />
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#D97757]/60 to-[#D97757] shrink-0" />
             <div>
               <div className="text-xs font-semibold text-white">Sarah Wijaya</div>
               <div className="text-[10px] text-white/60 uppercase tracking-wide">Wedding Planner Profesional</div>
@@ -141,7 +141,7 @@ export default function LoginPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="creator@memoverse.app"
-                  className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B3223A] focus:border-transparent transition"
+                  className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#264653] focus:border-transparent transition"
                 />
               </div>
             </div>
@@ -152,7 +152,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => handleComingSoon('Lupa password')}
-                  className="text-xs font-semibold text-[#B3223A] hover:text-[#8E1A2E] transition cursor-pointer"
+                  className="text-xs font-semibold text-[#264653] hover:text-[#D97757] transition cursor-pointer"
                 >
                   Lupa?
                 </button>
@@ -165,7 +165,7 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="Masukkan password Anda"
-                  className="w-full pl-10 pr-10 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B3223A] focus:border-transparent transition"
+                  className="w-full pl-10 pr-10 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#264653] focus:border-transparent transition"
                 />
                 <button
                   type="button"
@@ -182,7 +182,7 @@ export default function LoginPage() {
                 type="checkbox"
                 checked={remember}
                 onChange={(e) => setRemember(e.target.checked)}
-                className="w-3.5 h-3.5 rounded border-slate-300 text-[#B3223A] focus:ring-[#B3223A] cursor-pointer"
+                className="w-3.5 h-3.5 rounded border-slate-300 text-[#264653] focus:ring-[#264653] cursor-pointer"
               />
               Ingat saya selama 30 hari
             </label>
@@ -190,7 +190,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white transition shadow-lg shadow-[#B3223A]/25 flex items-center justify-center cursor-pointer"
+              className="w-full py-3 rounded-xl font-bold text-sm bg-[#264653] hover:bg-[#D97757] text-white transition shadow-lg shadow-[#264653]/25 flex items-center justify-center cursor-pointer"
             >
               {loading ? <Spinner size={18} /> : 'Masuk ke Hatimu'}
             </button>
@@ -200,14 +200,14 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={handleFillDemo}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 border border-rose-200 text-[#B3223A] text-xs font-semibold transition cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#264653]/10 hover:bg-[#264653]/15 border border-[#264653]/20 text-[#264653] text-xs font-semibold transition cursor-pointer"
             >
               <KeyRound className="w-3.5 h-3.5" />
               <span>Isi Kredensial Demo Admin</span>
             </button>
             <p className="text-slate-500 text-sm">
               Baru di Memoverse?{' '}
-              <Link href="/register" className="text-[#B3223A] font-bold hover:text-[#8E1A2E] transition">
+              <Link href="/register" className="text-[#264653] font-bold hover:text-[#D97757] transition">
                 Buat akun
               </Link>
             </p>

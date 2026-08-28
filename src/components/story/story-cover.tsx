@@ -43,7 +43,7 @@ export function StoryCover({ theme, title, subtitle, eventDate, coverPhotoUrl, s
     <div className="min-h-screen bg-[#F5F2F0] flex flex-col items-center justify-center px-4 py-10 sm:py-16">
       <div className="w-full max-w-2xl">
         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-bold text-slate-600 uppercase tracking-wide mb-4">
-          <Heart className="w-3.5 h-3.5 text-[#B3223A] fill-[#B3223A]" />
+          <Heart className="w-3.5 h-3.5 text-[#264653] fill-[#264653]" />
           Memoverse
         </span>
 
@@ -72,13 +72,13 @@ export function StoryCover({ theme, title, subtitle, eventDate, coverPhotoUrl, s
               type="button"
               onClick={handleShare}
               title="Bagikan"
-              className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-[#B3223A] transition cursor-pointer"
+              className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-[#264653] transition cursor-pointer"
             >
               {shared ? <Check className="w-4 h-4 text-emerald-600" /> : <Share2 className="w-4 h-4" />}
             </button>
             <Link
               href="/register"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white text-sm font-bold shadow-lg shadow-[#B3223A]/25 transition"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#264653] hover:bg-[#D97757] text-white text-sm font-bold shadow-lg shadow-[#264653]/25 transition"
             >
               <span>Create Your Own Story</span>
               <Sparkles className="w-4 h-4" />

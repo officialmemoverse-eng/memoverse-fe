@@ -63,16 +63,16 @@ export default function MyCreationsPage() {
   };
 
   return (
-    <Page className="bg-[#F7F1EF]">
+    <Page className="bg-[#F6F1EB]">
       <Container>
         {/* Header */}
         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm relative overflow-hidden mb-8 border border-slate-100">
-          <div className="absolute -right-10 -bottom-10 w-72 h-72 bg-[#B3223A]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -right-10 -bottom-10 w-72 h-72 bg-[#264653]/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="flex flex-wrap items-center justify-between gap-6 relative z-10">
             <div className="space-y-2 max-w-xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-50 text-[#B3223A] border border-rose-100 text-xs font-semibold">
-                <Heart className="w-3.5 h-3.5 fill-[#B3223A]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#264653]/10 text-[#264653] border border-[#264653]/20 text-xs font-semibold">
+                <Heart className="w-3.5 h-3.5 fill-[#264653]" />
                 <span>Cerita Saya</span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
@@ -85,7 +85,7 @@ export default function MyCreationsPage() {
 
             <button
               onClick={() => setShowCreateForm(true)}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white transition shadow-lg shadow-[#B3223A]/25 cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm bg-[#264653] hover:bg-[#D97757] text-white transition shadow-lg shadow-[#264653]/25 cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               <span>Cerita Baru</span>
@@ -100,7 +100,7 @@ export default function MyCreationsPage() {
           </div>
         ) : stories.length === 0 ? (
           <div className="p-12 rounded-3xl bg-white border border-slate-100 text-center">
-            <div className="w-14 h-14 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#B3223A] mx-auto mb-4">
+            <div className="w-14 h-14 rounded-2xl bg-[#264653]/10 border border-[#264653]/20 flex items-center justify-center text-[#264653] mx-auto mb-4">
               <BookHeart className="w-7 h-7" />
             </div>
             <h2 className="text-lg font-bold text-slate-900 mb-1">Belum Ada Cerita</h2>
@@ -109,7 +109,7 @@ export default function MyCreationsPage() {
             </p>
             <button
               onClick={() => setShowCreateForm(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white transition shadow-lg shadow-[#B3223A]/25 cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-[#264653] hover:bg-[#D97757] text-white transition shadow-lg shadow-[#264653]/25 cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               <span>Mulai Cerita Baru</span>
@@ -124,7 +124,7 @@ export default function MyCreationsPage() {
                 className="group p-5 rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-11 h-11 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#B3223A] shrink-0">
+                  <div className="w-11 h-11 rounded-2xl bg-[#264653]/10 border border-[#264653]/20 flex items-center justify-center text-[#264653] shrink-0">
                     <BookHeart className="w-5 h-5" />
                   </div>
                   <span
@@ -151,7 +151,7 @@ export default function MyCreationsPage() {
                   </span>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-[#B3223A] transition-colors">
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-[#264653] transition-colors">
                   <span>Lanjutkan</span>
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -174,7 +174,7 @@ export default function MyCreationsPage() {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="w-12 h-12 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#B3223A] mb-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#264653]/10 border border-[#264653]/20 flex items-center justify-center text-[#264653] mb-4">
                 <BookHeart className="w-6 h-6" />
               </div>
 
@@ -197,13 +197,13 @@ export default function MyCreationsPage() {
                   required
                   autoFocus
                   placeholder="Kisah Kami"
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B3223A] focus:border-transparent transition"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#264653] focus:border-transparent transition"
                 />
 
                 <button
                   type="submit"
                   disabled={creating || !title.trim()}
-                  className="w-full py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white transition shadow-lg shadow-[#B3223A]/25 flex items-center justify-center cursor-pointer disabled:opacity-60"
+                  className="w-full py-3 rounded-xl font-bold text-sm bg-[#264653] hover:bg-[#D97757] text-white transition shadow-lg shadow-[#264653]/25 flex items-center justify-center cursor-pointer disabled:opacity-60"
                 >
                   {creating ? <Spinner size={18} /> : 'Buat Cerita'}
                 </button>

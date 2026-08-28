@@ -25,7 +25,7 @@ const templates = [
     category: 'anniversary' as Category,
     tag: 'Anniversary',
     icon: PartyPopper,
-    gradient: 'from-rose-400 via-rose-500 to-[#8E1A2E]',
+    gradient: 'from-rose-400 via-rose-500 to-rose-900',
   },
   {
     id: 'first-date-memory',
@@ -129,7 +129,7 @@ export default function DashboardPage() {
     <div className="max-w-6xl mx-auto p-6 sm:p-8">
       <div className="flex flex-wrap items-start justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-extrabold text-[#B3223A] mb-1">Hello, {userName}</h1>
+          <h1 className="text-3xl font-extrabold text-[#264653] mb-1">Hello, {userName}</h1>
           <p className="text-slate-500 text-sm max-w-lg">
             Find the perfect template to express your heart. Our gallery is curated with love and designed for effortless creation.
           </p>
@@ -140,7 +140,7 @@ export default function DashboardPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search templates..."
-            className="pl-10 pr-4 py-2.5 w-64 bg-white border border-slate-200 rounded-xl text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B3223A] focus:border-transparent transition"
+            className="pl-10 pr-4 py-2.5 w-64 bg-white border border-slate-200 rounded-xl text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#264653] focus:border-transparent transition"
           />
         </div>
       </div>
@@ -153,8 +153,8 @@ export default function DashboardPage() {
             onClick={() => setCategory(c.key)}
             className={`px-4 py-1.5 rounded-full text-xs font-semibold transition cursor-pointer ${
               category === c.key
-                ? 'bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] text-white shadow-md shadow-[#B3223A]/20'
-                : 'bg-rose-50 text-[#B3223A] hover:bg-rose-100'
+                ? 'bg-[#264653] hover:bg-[#D97757] text-white shadow-md shadow-[#264653]/20'
+                : 'bg-[#264653]/10 text-[#264653] hover:bg-[#264653]/15'
             }`}
           >
             {c.label}
@@ -196,7 +196,7 @@ export default function DashboardPage() {
                   type="button"
                   onClick={() => handleUseTemplate(template.id, template.title)}
                   disabled={isCreating}
-                  className="w-full py-2 rounded-lg font-bold text-xs bg-rose-50 text-[#B3223A] group-hover:bg-gradient-to-r group-hover:from-[#B3223A] group-hover:to-[#8E1A2E] group-hover:text-white transition flex items-center justify-center cursor-pointer disabled:opacity-60"
+                  className="w-full py-2 rounded-lg font-bold text-xs bg-[#264653]/10 text-[#264653] group-hover:bg-[#D97757] group-hover:text-white transition flex items-center justify-center cursor-pointer disabled:opacity-60"
                 >
                   {isCreating ? <Spinner size={14} /> : 'Use This Template'}
                 </button>
@@ -212,7 +212,7 @@ export default function DashboardPage() {
         )}
       </div>
 
-      <div className="rounded-3xl bg-gradient-to-br from-[#B3223A] to-[#6E1626] p-8 sm:p-10 text-center text-white shadow-xl mb-10">
+      <div className="rounded-3xl bg-[#264653] p-8 sm:p-10 text-center text-white shadow-xl mb-10">
         <h2 className="text-xl sm:text-2xl font-extrabold mb-2">Don&rsquo;t see what you&rsquo;re looking for?</h2>
         <p className="text-white/80 text-sm mb-6 max-w-lg mx-auto">
           Upload your own photos and our AI-guided editor will craft a custom romantic template just for you.
@@ -221,7 +221,7 @@ export default function DashboardPage() {
           <button
             type="button"
             onClick={() => setShowScratchModal(true)}
-            className="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-sm bg-white text-[#B3223A] hover:bg-rose-50 transition cursor-pointer"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-sm bg-white text-[#264653] hover:bg-[#264653]/10 transition cursor-pointer"
           >
             Start from Scratch
           </button>
@@ -237,7 +237,7 @@ export default function DashboardPage() {
 
       <footer className="flex flex-wrap items-center justify-between gap-3 pt-6 border-t border-slate-100 text-xs text-slate-400">
         <div>
-          <span className="font-bold text-[#B3223A]">Memoverse</span>
+          <span className="font-bold text-[#264653]">Memoverse</span>
           <span className="ml-2">&copy; {new Date().getFullYear()} Memoverse SaaS. All rights reserved.</span>
         </div>
         <div className="flex items-center gap-4">
@@ -267,12 +267,12 @@ export default function DashboardPage() {
                 required
                 autoFocus
                 placeholder="Kisah Kami"
-                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B3223A] focus:border-transparent transition"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#264653] focus:border-transparent transition"
               />
               <button
                 type="submit"
                 disabled={creatingId === 'scratch' || !scratchTitle.trim()}
-                className="w-full py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] text-white transition shadow-lg shadow-[#B3223A]/25 flex items-center justify-center cursor-pointer disabled:opacity-60"
+                className="w-full py-3 rounded-xl font-bold text-sm bg-[#264653] hover:bg-[#D97757] text-white transition shadow-lg shadow-[#264653]/25 flex items-center justify-center cursor-pointer disabled:opacity-60"
               >
                 {creatingId === 'scratch' ? <Spinner size={18} /> : 'Buat Cerita'}
               </button>

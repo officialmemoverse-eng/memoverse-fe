@@ -31,7 +31,7 @@ export function Sidebar() {
     <aside className="w-64 bg-white min-h-screen flex flex-col border-r border-slate-100 shrink-0">
       {/* Brand Header */}
       <div className="p-6 border-b border-slate-100">
-        <div className="text-lg font-extrabold text-[#B3223A] tracking-tight">Memoverse</div>
+        <div className="text-lg font-extrabold text-[#264653] tracking-tight">Memoverse</div>
         <div className="text-xs text-slate-400">Creator Studio</div>
       </div>
 
@@ -66,11 +66,11 @@ export function Sidebar() {
               className={cn(
                 'flex items-center gap-3 px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200',
                 isActive
-                  ? 'bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] text-white shadow-md shadow-[#B3223A]/25'
-                  : 'text-slate-500 hover:bg-rose-50 hover:text-[#B3223A]'
+                  ? 'bg-[#264653] text-white shadow-md shadow-[#264653]/25'
+                  : 'text-slate-500 hover:bg-[#264653]/10 hover:text-[#264653]'
               )}
             >
-              <Icon className={cn('w-4.5 h-4.5 shrink-0', isActive ? 'text-white' : 'text-[#B3223A]')} />
+              <Icon className={cn('w-4.5 h-4.5 shrink-0', isActive ? 'text-white' : 'text-[#264653]')} />
               <span>{item.name}</span>
             </Link>
           );
@@ -79,11 +79,11 @@ export function Sidebar() {
 
       {/* Footer */}
       <div className="p-4 space-y-3">
-        <div className="rounded-2xl bg-rose-50 border border-rose-100 p-4">
+        <div className="rounded-2xl bg-[#264653]/10 border border-[#264653]/20 p-4">
           <p className="text-xs font-semibold text-slate-600 mb-2">Ready for more?</p>
           <button
             type="button"
-            className="w-full py-2 rounded-lg bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white text-xs font-bold shadow-md shadow-[#B3223A]/20 transition cursor-pointer"
+            className="w-full py-2 rounded-lg bg-[#264653] hover:bg-[#D97757] text-white text-xs font-bold shadow-md shadow-[#264653]/20 transition cursor-pointer"
           >
             Upgrade to Pro
           </button>
@@ -100,7 +100,7 @@ export function Sidebar() {
           <button
             type="button"
             onClick={handleLogout}
-            className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold text-slate-400 hover:text-[#B3223A] transition cursor-pointer"
+            className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold text-slate-400 hover:text-[#264653] transition cursor-pointer"
           >
             <LogOut className="w-4 h-4" />
             <span>Log Out</span>

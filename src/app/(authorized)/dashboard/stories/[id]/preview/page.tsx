@@ -88,7 +88,7 @@ export default function StoryPreviewPage() {
           <div className="flex items-center justify-between gap-4">
             <button
               onClick={() => router.push(`/dashboard/stories/${id}`)}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#B3223A] transition cursor-pointer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#264653] transition cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Kembali ke Edit</span>
@@ -98,7 +98,7 @@ export default function StoryPreviewPage() {
               <button
                 onClick={handlePublish}
                 disabled={publishing}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-[#B3223A] to-[#8E1A2E] hover:from-[#C93A52] hover:to-[#9F1D35] text-white transition shadow-lg shadow-[#B3223A]/25 cursor-pointer disabled:opacity-60"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-[#264653] hover:bg-[#D97757] text-white transition shadow-lg shadow-[#264653]/25 cursor-pointer disabled:opacity-60"
               >
                 {publishing ? <Spinner size={16} /> : <Rocket className="w-4 h-4" />}
                 <span>{publishing ? 'Mempublikasikan...' : 'Publikasikan'}</span>
@@ -142,11 +142,11 @@ export default function StoryPreviewPage() {
       </div>
 
       {loading ? (
-        <div className="flex justify-center py-16 bg-[#F7F1EF] min-h-screen">
+        <div className="flex justify-center py-16 bg-[#F6F1EB] min-h-screen">
           <Spinner size={32} />
         </div>
       ) : notFound || !story ? (
-        <div className="p-12 text-center bg-[#F7F1EF] min-h-screen text-slate-500">
+        <div className="p-12 text-center bg-[#F6F1EB] min-h-screen text-slate-500">
           Cerita tidak ditemukan.
         </div>
       ) : !opened ? (
