@@ -18,6 +18,8 @@ import {
   X,
 } from 'lucide-react';
 
+// add comment
+
 const navLinks = [
   { href: '#cara-kerja', label: 'Cara Kerja' },
   { href: '#fitur', label: 'Fitur' },
